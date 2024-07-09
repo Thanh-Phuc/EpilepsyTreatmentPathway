@@ -1,12 +1,10 @@
 #install necessary packages
-install.packages("remotes")
-remotes::install_github("OHDSI/DatabaseConnector")
-remotes::install_github("OHDSI/CohortGenerator")
-remotes::install_github("OHDSI/ROhdsiWebApi")
+#install.packages("remotes")
+#remotes::install_github("OHDSI/DatabaseConnector")
+#remotes::install_github("OHDSI/CohortGenerator")
+#remotes::install_github("OHDSI/ROhdsiWebApi")
 
-library(DatabaseConnector)
-library(CohortGenerator)
-library(ROhdsiWebApi)
+library(EpiDrug)
 library(dplyr)
 
 # Input connection setting
