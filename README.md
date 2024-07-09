@@ -167,7 +167,7 @@ launchResultsExplorer()
 
 The Shiny apps will appear as image below
 
-![](images/Screenshot%202024-07-09%20at%203.14.43%20PM.png)
+<img width="1084" alt="Screenshot 2024-07-09 at 3 14 43 PM" src="https://github.com/Thanh-Phuc/EpilepsyTreatmentPathway/assets/66868516/1800eb25-eae3-4b9b-9c14-51b4782ce2b7">
 
 Please upload the .zip file from the output folder to see the plots
 
