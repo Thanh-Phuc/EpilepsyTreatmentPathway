@@ -1,0 +1,24 @@
+atlas_id,cohort_id,cohort_name,logic_description,generate_stats
+483,483,Epilepsy drug,NA,TRUE
+614,614,Epilepsy drug_no_dianogstic,NA,TRUE
+604,604,Death,NA,TRUE
+539,539,Brivacetam,NA,TRUE
+540,540,Cannabinol,NA,TRUE
+541,541,Carbamazepine,NA,TRUE
+542,542,Clonazepam,NA,TRUE
+543,543,Ethosuximide,NA,TRUE
+544,544,Gabapentin,NA,TRUE
+545,545,Lacosamide,NA,TRUE
+546,546,Lamotrigine,NA,TRUE
+547,547,Levetiracetam,NA,TRUE
+548,548,Oxcarbazepine,NA,TRUE
+549,549,Perampanel,NA,TRUE
+550,550,Phenobarbital,NA,TRUE
+551,551,Phenytoin,NA,TRUE
+552,552,Zonisamide,NA,TRUE
+553,553,Sulthiama,NA,TRUE
+554,554,Tiagabine,NA,TRUE
+555,555,Topiramate,NA,TRUE
+556,556,Valproate,NA,TRUE
+557,557,Vigapatrin,NA,TRUE
+558,558,Zoniasmide,NA,TRUE

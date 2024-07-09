@@ -1,0 +1,14 @@
+Package: EpiDrug
+Title: Explore the Epilepsy treatment pathway (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R:
+  "Phan Thanh Phuc"
+  "Nicole Pratt"
+  "Lan Kelly"
+  "Jason Hsu"
+Description: In this study we will describe the utilisation patterns of anti-epileptic medicines, identify sequential patterns of medicine use by tracking exposure episodes of patients over time, and the length of time patients remain on a particular treatments or combinations of treatments.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
