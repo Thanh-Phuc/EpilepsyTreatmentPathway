@@ -1,0 +1,120 @@
+---
+title: "Installation for PBS10 CDM"
+output: html_notebook
+---
+
+# Setting up the R environment
+
+Here are the steps for installing the required environment to run the OHDSI R packages. Four things needs to be installed:
+
+1.  **R** is a statistical computing environment. It comes with a basic user interface that is primarily a command-line interface. For stability, we\'ve picked one R version that we aim to support for a while moving forward. Since 2023-04-01 our target is **R 4.2.3**. We highly recommend installing R 4.2.3 for maximum compatibility.
+
+2.  **RTools** is a set of programs that is required on Windows to build R packages from source.
+
+3.  **RStudio** is an IDE (Integrated Development Environment) that makes R easier to use. It includes a code editor, debugging and visualization tools. Please use it to obtain a nice R experience.
+
+4.  **Java** is a computing environment that is needed to run some of the components in the OHDSI R packages, for example those needed to connect to a database.
+
+In order to install HADES, you must also set a GitHub Personal Access Token as described [in this section](https://ohdsi.github.io/Hades/rSetup.html#github-personal-access-token)
+
+# Instructions for Windows
+
+These instructions are also demonstrated in [this video](https://youtu.be/DjVgbBGK4jM), showing a step-by-step guide to installing the required software.
+
+In Windows, older R versions (\< 4.2.0) come with both R a 32-bit and a 64-bits architecture. If you install R in both architectures, you **must** also install both 32-bit and 64- bits Java versions. It is recommended to only install the 64-bit version of R.
+
+## Installing R
+
+1.  Go to <https://cran.r-project.org/bin/windows/base/old/4.2.3/>, click on \'R-4.2.3-win.exe\' to download.
+
+2.  After the download has completed, run the installer. Use the default options everywhere, with two exceptions: First, it is better not to install into program files. Instead, just make R a subfolder of your C drive as shown below. Second, to avoid problems due to differing architectures between R and Java, if you\'re installing an older R version (\< 4.2.0), disable the 32-bit architecture as also shown below.
+
+    ![](https://ohdsi.github.io/Hades/images/rDestination.png)
+
+    ![](https://ohdsi.github.io/Hades/images/no32Bits.png)
+
+Once completed, you should be able to select R from your Start Menu.
+
+## Installing RTools
+
+1.  Go to <https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html>, and download the RTools installer.
+
+2.  After downloading has completed run the installer. Select the default options everywhere.
+
+## Installing RStudio
+
+1.  Go to <https://posit.co/download/rstudio-desktop/>, select \'Download RStudio Desktop For Windows\'.
+
+2.  After downloading, start the installer, and use the default options everywhere.
+
+## Installing Java
+
+1.  Go to <https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html>, and select the Windows 64-bit JDK installer as highlighted below. ![](https://ohdsi.github.io/Hades/images/downloadJavaWindows.png)
+
+2.  After downloading just run the installer.
+
+3.  The default maximum Java heap space is very small (only 512MB), so to avoid Java out-of-heap-memory errors, we must increase the maximum heap size. To set this for all R programs, add this line to the `.Renviron` file:
+
+    ```         
+    _JAVA_OPTIONS='-Xmx4g'
+    ```
+
+    The easiest way to edit your `.Renviron` file is by using the `usethis` package:
+
+    ```         
+    install.packages("usethis")
+    library(usethis)
+    edit_r_environ()
+    ```
+
+    This will open `.Renviron` in a text editor. Add the line, save the file, and restart R. Java will now have a maximum of 4GB of heap space available.
+
+# GitHub Personal Access Token
+
+Installing HADES packages requires downloads from GitHub. Unfortunately, GitHub has a cap on how many downloads an anonymous user can make in a short amount of time, and this cap is reached when trying to download all HADES packages. To avoid this cap, we need to authenticate ourselves using our GitHub account. A known GitHub user has a much higher download cap, and can install HADES without issues. We can authenticate ourselves by first creating a **Personal Access Token** (PAT), and then providing this to R.
+
+Fortunately, you will need to do this only once. After you\'ve set your PAT in R, you can rely on it to be there in all your future R sessions.
+
+## Creating a Personal Access Token
+
+Before we can create a PAT, you must make sure that you have a valid GitHub account. You can create one for free at [GitHub.com](https://github.com/).
+
+The easiest way to create a GitHub PAT is by using the [usethis](https://usethis.r-lib.org/) package. Running this code will open a browser that allows you to generate a PAT:
+
+```         
+install.packages("usethis")
+library(usethis)
+create_github_token(scopes = c("(no scope)"), description = "R:GITHUB_PAT", host = "https://github.com")
+```
+
+You may need to log on to GitHub. Note that the PAT does not require any of the permissions listed, so you can leave all checkboxes unchecked. Scroll down and click on \'Generate token\' to generate your PAT. Your PAT is a sequence of 40 letters and numbers. Make sure to copy your PAT, because you will not be able to see it again once you close your browser!
+
+## Adding your Personal Access Token to R
+
+Next, we need to make the PAT available to R. For this we need to add a line to the `.Renviron` file that looks like this:
+
+```         
+GITHUB_PAT = 'a1b2c3d4e5f6g7h8g9h0ijklmnopqrstuvwxyz'
+```
+
+where \'a1b2c3d4e5f6g7h8g9h0ijklmnopqrstuvwxyz\' is your PAT.
+
+The easiest way to edit your `.Renviron` file is by using the `usethis` package again:
+
+```         
+edit_r_environ()
+```
+
+This will open `.Renviron` in a text editor. Add the line with your PAT, save the file, and restart R. The PAT will now be available to the various R functions.
+
+# Install OHDSI packages  as following list: 
+
+```{r}
+install.packages("remotes")
+remotes::install_github("OHDSI/CohortGenerator")
+remotes::install_github("OHDSI/DatabaseConnector")
+remotes::install_github("darwin-eu-dev/‘TreatmentPatterns")
+```
+
+Refer to OHDSI github repository at <https://github.com/OHDSI> (using `remotes::install_github()`)
+Install other supporting packages from CRAN (using `install.packages()`)
